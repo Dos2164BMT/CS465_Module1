@@ -1,5 +1,19 @@
 {
+  "name": "travlr",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app_server/bin/www",
+    "seed": "node ./app_api/data/seed.js",
+    "validate:data": "node ./app_api/data/validate.js"
+  },
   "dependencies": {
-    "hbs": "^4.2.1"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "hbs": "^4.2.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^8.19.1",
+    "morgan": "~1.9.1"
   }
 }
