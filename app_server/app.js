@@ -6,6 +6,10 @@ var logger = require('morgan');
 var hbs = require('hbs');
 
 var indexRouter = require('./routes/index');
+var apiRouter = require('../app_api/routes/index');
+
+// Initialize the MongoDB connection and register the Mongoose models.
+require('../app_api/models/db');
 
 var app = express();
 
@@ -19,11 +23,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// static files
-app.use(express.static(path.join(__dirname, 'public')));
-
 // routes
 app.use('/', indexRouter);
+app.use('/api', apiRouter);
+
+// Serve static assets and legacy pages after MVC routes.
+app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
