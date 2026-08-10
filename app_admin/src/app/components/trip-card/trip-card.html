@@ -1,0 +1,16 @@
+<article class="card h-100 shadow-sm border-0">
+  <img class="card-img-top trip-image" [src]="'/images/' + trip.image" [alt]="trip.name" />
+  <div class="card-body d-flex flex-column">
+    <div class="d-flex justify-content-between align-items-start gap-3">
+      <div><span class="badge text-bg-info mb-2">{{ trip.code }}</span><h2 class="h4 mb-1">{{ trip.name }}</h2></div>
+      <span class="price">{{ trip.perPerson | currency:'USD':'symbol':'1.2-2' }}</span>
+    </div>
+    <p class="text-secondary small mb-2">{{ trip.length }} · {{ trip.start | date:'mediumDate' }}</p>
+    <p class="fw-semibold mb-2">{{ trip.resort }}</p>
+    <p class="card-text flex-grow-1">{{ trip.description }}</p>
+    <div class="d-flex gap-2 mt-3">
+      <a class="btn btn-primary flex-grow-1" [routerLink]="['/edit', trip.code]">Edit trip</a>
+      <button class="btn btn-outline-danger" type="button" (click)="deleteRequested.emit(trip.code)">Delete</button>
+    </div>
+  </div>
+</article>

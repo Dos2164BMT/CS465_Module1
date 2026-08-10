@@ -1,0 +1,66 @@
+{
+  "info": {
+    "name": "Travlr Module Five API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET all trips",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/trips"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "pm.test('Returns a JSON array', () => pm.expect(pm.response.json()).to.be.an('array'));",
+            "pm.test('Returns three seeded trips', () => pm.expect(pm.response.json()).to.have.lengthOf(3));"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "GET one trip by code",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/trips/GALR"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "pm.test('Returns requested trip', () => pm.expect(pm.response.json().code).to.eql('GALR'));"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "GET unknown trip returns 404",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/trips/XXXX"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Status is 404', () => pm.response.to.have.status(404));",
+            "pm.test('Returns JSON error message', () => pm.expect(pm.response.json().message).to.be.a('string'));"
+          ]
+        }
+      }]
+    }
+  ]
+}

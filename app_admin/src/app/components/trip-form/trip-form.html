@@ -1,0 +1,22 @@
+<section class="form-shell mx-auto">
+  <a class="text-decoration-none" routerLink="/">← Back to trips</a>
+  <div class="mt-3 mb-4"><p class="eyebrow mb-1">{{ editMode ? 'Update' : 'Create' }}</p>
+    <h1 class="display-6 fw-bold">{{ editMode ? 'Edit trip' : 'Add a trip' }}</h1>
+    <p class="text-secondary">All fields are required and saved through the REST API.</p></div>
+  @if (errorMessage) { <div class="alert alert-danger" role="alert">{{ errorMessage }}</div> }
+  @if (loading) { <div class="text-center py-5"><div class="spinner-border text-primary"></div></div> } @else {
+    <form #tripForm="ngForm" (ngSubmit)="save(tripForm)" class="card border-0 shadow-sm p-4 p-md-5">
+      <div class="row g-3">
+        <div class="col-md-4"><label class="form-label" for="code">Trip code</label><input class="form-control text-uppercase" id="code" name="code" [(ngModel)]="trip.code" required maxlength="8" [readonly]="editMode" /></div>
+        <div class="col-md-8"><label class="form-label" for="name">Trip name</label><input class="form-control" id="name" name="name" [(ngModel)]="trip.name" required /></div>
+        <div class="col-md-6"><label class="form-label" for="length">Length</label><input class="form-control" id="length" name="length" [(ngModel)]="trip.length" placeholder="4 nights / 5 days" required /></div>
+        <div class="col-md-6"><label class="form-label" for="start">Start date</label><input class="form-control" id="start" type="date" name="start" [(ngModel)]="trip.start" required /></div>
+        <div class="col-md-8"><label class="form-label" for="resort">Resort</label><input class="form-control" id="resort" name="resort" [(ngModel)]="trip.resort" required /></div>
+        <div class="col-md-4"><label class="form-label" for="perPerson">Price per person</label><input class="form-control" id="perPerson" name="perPerson" type="number" min="0" step="0.01" [(ngModel)]="trip.perPerson" required /></div>
+        <div class="col-12"><label class="form-label" for="image">Image filename</label><select class="form-select" id="image" name="image" [(ngModel)]="trip.image" required><option value="reef1.jpg">reef1.jpg</option><option value="reef2.jpg">reef2.jpg</option><option value="reef3.jpg">reef3.jpg</option></select></div>
+        <div class="col-12"><label class="form-label" for="description">Description</label><textarea class="form-control" id="description" name="description" rows="5" [(ngModel)]="trip.description" required></textarea></div>
+      </div>
+      <div class="d-flex flex-wrap gap-2 mt-4"><button class="btn btn-success btn-lg" type="submit" [disabled]="saving">{{ saving ? 'Saving…' : (editMode ? 'Update trip' : 'Add trip') }}</button><a class="btn btn-outline-secondary btn-lg" routerLink="/">Cancel</a></div>
+    </form>
+  }
+</section>

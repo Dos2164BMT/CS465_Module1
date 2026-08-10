@@ -1,0 +1,39 @@
+{
+  "info": {
+    "name": "Travlr Module 6 CRUD API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:3000/api" }],
+  "item": [
+    {
+      "name": "GET all trips",
+      "request": { "method": "GET", "url": "{{baseUrl}}/trips" }
+    },
+    {
+      "name": "POST add trip",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"code\": \"BALI\",\n  \"name\": \"Bali Escape\",\n  \"length\": \"6 nights / 7 days\",\n  \"start\": \"2026-12-10\",\n  \"resort\": \"Travlr Bali Resort\",\n  \"perPerson\": \"1299.00\",\n  \"image\": \"reef1.jpg\",\n  \"description\": \"A tropical escape added through the Module Six REST API.\"\n}" },
+        "url": "{{baseUrl}}/trips"
+      }
+    },
+    {
+      "name": "GET added trip",
+      "request": { "method": "GET", "url": "{{baseUrl}}/trips/BALI" }
+    },
+    {
+      "name": "PUT update trip",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"code\": \"BALI\",\n  \"name\": \"Bali Escape Updated\",\n  \"length\": \"7 nights / 8 days\",\n  \"start\": \"2026-12-10\",\n  \"resort\": \"Travlr Bali Resort\",\n  \"perPerson\": \"1399.00\",\n  \"image\": \"reef2.jpg\",\n  \"description\": \"An updated tropical escape verified through PUT.\"\n}" },
+        "url": "{{baseUrl}}/trips/BALI"
+      }
+    },
+    {
+      "name": "DELETE added trip",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/trips/BALI" }
+    }
+  ]
+}

@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{title}}</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 <body>
-  {{{body}}}
+  <div id="background">
+    <div id="page">
+      <div id="header">
+        <div id="logo">
+          <a href="/"><img src="/images/logo.png" alt="Travlr Getaways logo" height="100" width="200"></a>
+        </div>
+        <div id="navigation">
+          <ul>
+            <li {{#if activeHome}}class="selected"{{/if}}><a href="/">Home</a></li>
+            <li {{#if activeTravel}}class="selected"{{/if}}><a href="/travel">Travel</a></li>
+            <li><a href="/rooms.html">Rooms</a></li>
+            <li><a href="/meals.html">Meals</a></li>
+            <li><a href="/news.html">News</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      {{{body}}}
+    </div>
+
+    <div id="footer">
+      <div>
+        <ul class="navigation">
+          <li {{#if activeHome}}class="active"{{/if}}><a href="/">Home</a></li>
+          <li {{#if activeTravel}}class="active"{{/if}}><a href="/travel">Travel</a></li>
+          <li><a href="/rooms.html">Rooms</a></li>
+          <li><a href="/meals.html">Meals</a></li>
+          <li><a href="/news.html">News</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        <div id="connect">
+          <a href="https://pinterest.com/" target="_blank" rel="noopener" class="pinterest" aria-label="Pinterest"></a>
+          <a href="https://facebook.com/" target="_blank" rel="noopener" class="facebook" aria-label="Facebook"></a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener" class="twitter" aria-label="Twitter"></a>
+          <a href="https://plus.google.com/" target="_blank" rel="noopener" class="googleplus" aria-label="Google Plus"></a>
+        </div>
+      </div>
+      <p>&copy; 2026 by Travlr Getaways. All Rights Reserved</p>
+    </div>
+  </div>
 </body>
 </html>

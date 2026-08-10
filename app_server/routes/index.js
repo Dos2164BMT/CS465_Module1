@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var travelController = require('../controllers/travel');
+const mainController = require('../controllers/main');
+const travelController = require('../controllers/travel');
 
-router.get('/', travelController.home);
+router.get('/', mainController.index);
 router.get('/travel', travelController.travel);
+router.get('/travel.html', (req, res) => res.redirect(301, '/travel'));
 
 module.exports = router;

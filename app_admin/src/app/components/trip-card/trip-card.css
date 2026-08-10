@@ -1,0 +1,4 @@
+.trip-image { height: 210px; object-fit: cover; }
+.price { color: #087f5b; font-size: 1.15rem; font-weight: 700; white-space: nowrap; }
+.card { overflow: hidden; transition: transform 160ms ease; }
+.card:hover { transform: translateY(-3px); }
